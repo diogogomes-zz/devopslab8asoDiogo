@@ -35,7 +35,7 @@ jobs:
         with:
           fetch-depth: 0
 
-      # Autenticação do Heroku CLI via API TOKEN
+      # Autenticação do Heroku CLI via API TOKEN 
       # https://devcenter.heroku.com/articles/authentication
       - name: Heroku Login
         run: | 
