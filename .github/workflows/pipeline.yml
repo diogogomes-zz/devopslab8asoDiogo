@@ -24,7 +24,16 @@ jobs:
         run:  pip install flask flask-wtf pytest pytest-cov
 
       - name: Unit Test
-        run: python -m unittest -v test
+        run: |
+28	          coverage run --source=app -m pytest test.py
+29	          coverage report -m
+30	          coverage xml -i
+31	
+32	      - name: SonarCloud Scan
+33	        uses: SonarSource/sonarcloud-github-action@master
+34	        env:
+35	          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}  
+36	          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}  
 
   Deploy:
     needs: Build
